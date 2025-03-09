@@ -17,7 +17,9 @@ def repeat_key(key: str, length: int) -> str:
 
 
 def get_encrypted_symb(old_sym: str, key_sym: str) -> str:
+
     if old_sym.isalpha():
+
         current_idx = alphabet.index(old_sym.lower())
         key_idx = alphabet.index(key_sym.lower())
 

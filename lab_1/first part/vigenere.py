@@ -36,3 +36,17 @@ def repeat_key(key: str, length: int) -> str:
 
     return repeated_key
 
+def vigenere_cipher(input_text: str, key: str) -> str:
+
+    encrypted_text = ""
+
+    repeated_key = repeat_key(key, len(input_text))
+
+    for i in range(len(input_text)):
+
+        text_sym = input_text[i]
+        key_sym = repeated_key[i]
+
+        encrypted_text += get_encrypted_symb(text_sym, key_sym)
+
+    return encrypted_text

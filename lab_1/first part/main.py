@@ -16,10 +16,12 @@ def main():
 
     key = "собака"
     input_text = read_text("user_texts/input_text.txt")
-    encrypted_text = vigenere_cipher(input_text, key)
+    encrypted_text = vigenere_cipher_encrypt(input_text, key)
     output_text = "user_texts/output_text.txt"
 
     write_encrypted_text(output_text, encrypted_text)
+
+    print(vigenere_cipher_decrypt(encrypted_text, key))
 
 if __name__ == "__main__":
      main()

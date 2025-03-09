@@ -26,3 +26,13 @@ def get_encrypted_symb(old_sym: str, key_sym: str) -> str:
         return old_sym
 
 
+def repeat_key(key: str, length: int) -> str:
+
+    repeated_key = ""
+
+    while len(repeated_key) < length:
+
+        repeated_key += key
+
+    return repeated_key
+

@@ -14,3 +14,35 @@ def save_freq_to_json(filename: str, d: dict) -> None:
 
     with open(filename, 'w', encoding='utf-8') as file:
         json.dump(d, file, ensure_ascii=False)
+
+def calculate_freq(text: str) -> dict:
+
+    sym_counts = {}
+
+    lower_text = text.lower()
+
+    for sym in lower_text:
+
+        if sym in sym_counts:
+
+            sym_counts[sym] += 1
+
+        else:
+
+            sym_counts[sym] = 1
+
+    total_symbs_count = sum(sym_counts.values())
+
+    sym_freq = {}
+
+    for char, count in sym_counts.items():
+
+        freq = round(count / total_symbs_count, 4)
+
+        sym_freq[char] = freq
+
+    sorted_freq_list = sorted(sym_freq.items(), key=lambda item: item[1], reverse=True)
+
+    sorted_freq = dict(sorted_freq_list)
+
+    return sorted_freq

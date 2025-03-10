@@ -23,6 +23,7 @@ def load_freq_from_json(filename: str) -> dict:
     with open(filename, 'r', encoding='utf-8') as file:
         return json.load(file)
 
+
 def calculate_freq(text: str) -> dict:
 
     sym_counts = {}
@@ -55,3 +56,16 @@ def calculate_freq(text: str) -> dict:
 
     return sorted_freq
 
+
+def create_encrypt_rus_dict(encrypt_freq: dict, rus_freq: dict) -> dict:
+
+    encrypt_rus_dict = {}
+
+    encrypt_freq_list = list(encrypt_freq.items())
+    rus_freq_list = list(rus_freq.items())
+
+    for i in range(min(len(rus_freq), len(encrypt_freq))):
+
+        encrypt_rus_dict[encrypt_freq_list[i][0]] = rus_freq_list[i][0]
+
+    return encrypt_rus_dict

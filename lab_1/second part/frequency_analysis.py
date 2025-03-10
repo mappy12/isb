@@ -1,5 +1,5 @@
 import json
-from idlelib.iomenu import encoding
+
 
 russian_freq = {
     'о': 0.1097, 'е': 0.0845, 'а': 0.0801, 'и': 0.0735, 'н': 0.0670,

@@ -1,4 +1,5 @@
 import json
+from idlelib.iomenu import encoding
 
 russian_freq = {
     'о': 0.1097, 'е': 0.0845, 'а': 0.0801, 'и': 0.0735, 'н': 0.0670,
@@ -10,10 +11,17 @@ russian_freq = {
     'ф': 0.0026, 'ъ': 0.0004, 'ё': 0.0004
 }
 
+
 def save_freq_to_json(filename: str, d: dict) -> None:
 
     with open(filename, 'w', encoding='utf-8') as file:
         json.dump(d, file, ensure_ascii=False)
+
+
+def load_freq_from_json(filename: str) -> dict:
+
+    with open(filename, 'r', encoding='utf-8') as file:
+        return json.load(file)
 
 def calculate_freq(text: str) -> dict:
 
@@ -46,3 +54,4 @@ def calculate_freq(text: str) -> dict:
     sorted_freq = dict(sorted_freq_list)
 
     return sorted_freq
+

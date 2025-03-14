@@ -1,15 +1,16 @@
 import json
 
 
-russian_freq = {
-    'о': 0.1097, 'е': 0.0845, 'а': 0.0801, 'и': 0.0735, 'н': 0.0670,
-    'т': 0.0626, 'с': 0.0547, 'р': 0.0473, 'в': 0.0454, 'л': 0.0440,
-    'к': 0.0349, 'м': 0.0321, 'д': 0.0298, 'п': 0.0281, 'у': 0.0262,
-    'я': 0.0201, 'ы': 0.0190, 'ь': 0.0174, 'г': 0.0170, 'з': 0.0165,
-    'б': 0.0159, 'ч': 0.0144, 'й': 0.0121, 'х': 0.0097, 'ж': 0.0094,
-    'ш': 0.0073, 'ю': 0.0064, 'ц': 0.0048, 'щ': 0.0036, 'э': 0.0032,
-    'ф': 0.0026, 'ъ': 0.0004, 'ё': 0.0004
+RUSSIAN_FREQ = {
+    ' ': 0.128675, 'о': 0.096456, 'и': 0.075312, 'е': 0.072292, 'а': 0.064841,
+    'н': 0.061820, 'т': 0.061619, 'с': 0.051953, 'р': 0.040677, 'в': 0.039267,
+    'м': 0.029803, 'л': 0.029400, 'д': 0.026983, 'я': 0.026379, 'к': 0.025977,
+    'п': 0.024768, 'з': 0.015908, 'ы': 0.015707, 'ь': 0.015103, 'у': 0.013290,
+    'ч': 0.011679, 'ж': 0.010673, 'г': 0.009867, 'х': 0.008659, 'ф': 0.007249,
+    'й': 0.006847, 'ю': 0.006847, 'б': 0.006645, 'ц': 0.005034, 'ш': 0.004229,
+    'щ': 0.003625, 'э': 0.002416, 'ъ': 0.000000
 }
+
 
 
 def save_freq_to_json(filename: str, d: dict) -> None:
@@ -28,9 +29,7 @@ def calculate_freq(text: str) -> dict:
 
     sym_counts = {}
 
-    lower_text = text.lower()
-
-    for sym in lower_text:
+    for sym in text:
 
         if sym in sym_counts:
 
@@ -46,7 +45,7 @@ def calculate_freq(text: str) -> dict:
 
     for char, count in sym_counts.items():
 
-        freq = round(count / total_symbs_count, 4)
+        freq = round(count / total_symbs_count, 6)
 
         sym_freq[char] = freq
 
@@ -69,3 +68,20 @@ def create_encrypt_rus_dict(encrypt_freq: dict, rus_freq: dict) -> dict:
         encrypt_rus_dict[encrypt_freq_list[i][0]] = rus_freq_list[i][0]
 
     return encrypt_rus_dict
+
+
+def decrypt_text(encrypted_text: str, d: dict) -> str:
+
+    decrypted_text = []
+
+    for symb in encrypted_text:
+
+        if symb in d:
+
+            decrypted_text.append(d[symb])
+
+        else:
+
+            decrypted_text.append(symb)
+
+    return ''.join(decrypted_text)

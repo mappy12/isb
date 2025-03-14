@@ -1,6 +1,6 @@
 from Tools.scripts.generate_re_casefix import alpha
 
-alphabet = ['а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й',
+ALPHABET = ['а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й',
     'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф',
     'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я']
 
@@ -20,12 +20,12 @@ def get_encrypted_symb(old_sym: str, key_sym: str) -> str:
 
     if old_sym.isalpha():
 
-        current_idx = alphabet.index(old_sym.lower())
-        key_idx = alphabet.index(key_sym.lower())
+        current_idx = ALPHABET.index(old_sym.lower())
+        key_idx = ALPHABET.index(key_sym.lower())
 
-        if current_idx + key_idx >= len(alphabet):
+        if current_idx + key_idx >= len(ALPHABET):
 
-            encrypt_idx =  current_idx + key_idx - len(alphabet)
+            encrypt_idx =  current_idx + key_idx - len(ALPHABET)
 
         else:
 
@@ -33,9 +33,9 @@ def get_encrypted_symb(old_sym: str, key_sym: str) -> str:
 
         if old_sym == old_sym.upper():
 
-            return alphabet[encrypt_idx].upper()
+            return ALPHABET[encrypt_idx].upper()
 
-        return alphabet[encrypt_idx]
+        return ALPHABET[encrypt_idx]
 
     else:
 
@@ -46,12 +46,12 @@ def get_decrypted_symb(encrypted_sym: str, key_sym: str):
 
     if encrypted_sym.isalpha():
 
-        encrypted_idx = alphabet.index(encrypted_sym.lower())
-        key_idx = alphabet.index(key_sym.lower())
+        encrypted_idx = ALPHABET.index(encrypted_sym.lower())
+        key_idx = ALPHABET.index(key_sym.lower())
 
         if encrypted_idx - key_idx < 0:
 
-            decrypted_idx = encrypted_idx - key_idx + len(alphabet)
+            decrypted_idx = encrypted_idx - key_idx + len(ALPHABET)
 
         else:
 
@@ -59,9 +59,9 @@ def get_decrypted_symb(encrypted_sym: str, key_sym: str):
 
         if encrypted_sym == encrypted_sym.upper():
 
-            return alphabet[decrypted_idx].upper()
+            return ALPHABET[decrypted_idx].upper()
 
-        return alphabet[decrypted_idx]
+        return ALPHABET[decrypted_idx]
 
     else:
 

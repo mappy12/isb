@@ -1,7 +1,39 @@
 from frequency_analysis import *
 
+
+def write_encrypted_text(filename: str, text: str) -> None:
+
+    with open(filename, 'w', encoding='utf-8') as file:
+        file.write(text)
+
+
+def read_file(filename: str) -> str:
+
+    with open(filename, 'r', encoding='utf-8') as file:
+        return file.read()
+
+
 def main():
-    save_freq_to_json(' frequencies/russian_freq.json', russian_freq)
+
+    save_freq_to_json('frequencies/russian_freq.json', RUSSIAN_FREQ)
+
+    encrypted_text = read_file('user_texts/encrypted_text.txt')
+
+    text_freq = calculate_freq(encrypted_text)
+
+    save_freq_to_json("frequencies/encrypted_freq.json", text_freq)
+
+    rus_dict = load_freq_from_json('frequencies/russian_freq.json')
+    encrypt_dict = load_freq_from_json('frequencies/encrypted_freq.json')
+
+    encrypt_rus_dict = create_encrypt_rus_dict(encrypt_dict, rus_dict)
+
+    key = load_freq_from_json('user_texts/key.json')
+
+    decrypted_text = decrypt_text(encrypted_text, key)
+
+    write_encrypted_text('user_texts/decrypted_text.txt', decrypted_text)
+
 
 if __name__ == '__main__':
     main()

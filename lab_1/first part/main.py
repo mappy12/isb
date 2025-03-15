@@ -16,7 +16,7 @@ def parser_create() -> Namespace:
 
     parser.add_argument('input_text', type=str, help='Name of input text file')
     parser.add_argument('output_text', type=str, help='Name of output text file')
-    parser.add_argument('key', type=str, help='Filename containing the key')
+    parser.add_argument('key_filename', type=str, help='Filename containing the key')
 
     return parser.parse_args()
 

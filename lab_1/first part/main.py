@@ -6,6 +6,11 @@ from  vigenere import *
 
 
 def parser_create() -> Namespace:
+    """
+    parser
+
+    :return: parsed arguments
+    """
 
     parser = argparse.ArgumentParser()
 
@@ -17,12 +22,20 @@ def parser_create() -> Namespace:
 
 
 def read_text(filename: str) -> str:
+    """
+    Text reading function.
 
+    :return: The input text.
+    """
     with open(filename, 'r', encoding='utf-8') as text:
         return text.read()
 
 
 def write_encrypted_text(filename: str, text: str) -> None:
+    """
+    Function to write text to file.
+
+    """
 
     with open(filename, 'w', encoding='utf-8') as file:
         file.write(text)

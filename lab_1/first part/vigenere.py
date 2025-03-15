@@ -1,11 +1,16 @@
-from Tools.scripts.generate_re_casefix import alpha
-
 ALPHABET = ['а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й',
     'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф',
     'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я']
 
 
 def repeat_key(key: str, length: int) -> str:
+    """
+    Repeats the key until it reaches the required length.
+
+    :param key: The original key.
+    :param length: The length to which the key should be repeated.
+    :return: The repeated key of the required length.
+    """
 
     repeated_key = ""
 
@@ -17,6 +22,13 @@ def repeat_key(key: str, length: int) -> str:
 
 
 def get_encrypted_symb(old_sym: str, key_sym: str) -> str:
+    """
+    Encrypts a single character using the Vigenère cipher.
+
+    :param old_sym: The original text character.
+    :param key_sym: The corresponding key character.
+    :return: The encrypted character.
+    """
 
     if old_sym.isalpha():
 
@@ -42,7 +54,14 @@ def get_encrypted_symb(old_sym: str, key_sym: str) -> str:
         return old_sym
 
 
-def get_decrypted_symb(encrypted_sym: str, key_sym: str):
+def get_decrypted_symb(encrypted_sym: str, key_sym: str) -> str:
+    """
+    Decrypts a single character using the Vigenère cipher.
+
+    :param encrypted_sym: The encrypted character.
+    :param key_sym: The corresponding key character.
+    :return: The decrypted character.
+    """
 
     if encrypted_sym.isalpha():
 
@@ -69,6 +88,13 @@ def get_decrypted_symb(encrypted_sym: str, key_sym: str):
 
 
 def vigenere_cipher_encrypt(input_text: str, key: str) -> str:
+    """
+    Encrypts text.
+
+    :param input_text: The original text to be encrypted.
+    :param key: The encryption key.
+    :return: The encrypted text.
+    """
 
     encrypted_text = ""
 
@@ -84,6 +110,13 @@ def vigenere_cipher_encrypt(input_text: str, key: str) -> str:
     return encrypted_text
 
 def vigenere_cipher_decrypt(encrypted_text: str, key: str) -> str:
+    """
+    Decrypts text.
+
+    :param encrypted_text: The encrypted text.
+    :param key: The encryption key.
+    :return: The decrypted text.
+    """
 
     decrypted_text = ""
 
